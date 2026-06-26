@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prompt><![CDATA[
+## 参考资料
+
+{retrieved_context}
+
+## 网络搜索补充
+
+{search_context}
+
+## 学生问题
+
+{question}
+
+请结合以上参考资料和搜索结果，为学生提供详尽的解答。用自然流畅的语言直接作答，不要在回答中提及"参考资料"、"资料[N]"或检索过程，也不要区分哪些内容来自资料、哪些来自补充。
+]]></prompt>
+

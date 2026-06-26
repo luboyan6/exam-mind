@@ -1,0 +1,57 @@
+# local settings and apis
+.streamlit/secrets.toml
+.env
+.env.local
+.env.*.local
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# Jetbrains IDE
+.idea/
+
+# test
+.pytest_cache/
+
+# some drafts
+docs/drafts/
+
+# vector store(ChromaDB)
+chroma_store/
+
+# my learning notes
+learning_notes/
+
+# logs
+logs/
+
+# Makefile(A scaffold file for future full-stack task automation)
+Makefile
+
+# Frontend / Next.js
+node_modules/
+.next/
+out/
+build/
+.vercel/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+frontend/dist/
+frontend/%TEMP%/
+
+# some local tools
+jaeger*
+*-windows-amd64/
+local_tools/cloc-2.08.exe
+
+# Claude Code local config
+CLAUDE.md
+
+
+docker-compose.override.yml
