@@ -32,7 +32,7 @@
 - 以资深班主任人设，基于对话历史给出兼具温度与实用性的情绪支持建议
 
 ### 2.4 意图路由（Supervisor）
-- Qwen2.5-7B轻量级模型进行意图分类
+- deepseek-v4flash轻量级模型进行意图分类
 - 单次LLM调用完成：意图分类 + 学科检测 + 知识点提取
 - 支持四类意图：学科答疑、学习规划、情绪疏导、未知意图
 
@@ -78,9 +78,9 @@
 | **前端** | Next.js 16 + Tailwind CSS + React Flow | 响应式聊天UI、SSE消费、交互式DAG可视化 |
 | **后端API** | FastAPI + Uvicorn | SSE流式端点、CORS、OTel自动埋点 |
 | **编排引擎** | LangGraph | StateGraph + interrupt() HIL + 条件边 + Fan-out/Fan-in |
-| **路由LLM** | Qwen2.5-7B（SiliconFlow） | 轻量意图分类 + 反馈路由 |
+| **路由LLM** | deepseek-v4flash（SiliconFlow） | 轻量意图分类 + 反馈路由 |
 | **生成LLM** | DeepSeek-V3 | 学科解答、学习计划、情绪支持 |
-| **LLM容灾** | Qwen2.5-7B（SiliconFlow） | 跨厂商故障转移 |
+| **LLM容灾** | deepseek-v4flash（SiliconFlow） | 跨厂商故障转移 |
 | **向量数据库** | ChromaDB | 本地知识库检索（L2→相关度归一化） |
 | **文本嵌入** | BAAI/bge-m3（SiliconFlow） | RAG向量化 |
 | **关键词检索** | rank-bm25 + jieba | 中文感知BM25检索 |
@@ -184,7 +184,7 @@ def async_invoke_with_fallback(primary, messages, *, fallback=None, span=None):
         raise
 ```
 - 捕获超时、连接错误、502、限流等可恢复错误
-- 自动切换备用模型（默认Qwen2.5-7B）
+- 自动切换备用模型（默认deepseek-v4flash）
 - OpenTelemetry记录容灾事件
 
 ### 5.3 全链路追踪

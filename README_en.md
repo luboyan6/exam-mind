@@ -15,7 +15,7 @@
 
 ## Overview
 
-ExamMind is a **production-grade multi-agent AI tutoring platform** purpose-built for exam preparation. It leverages **LangGraph** for stateful workflow orchestration, **FastAPI** for SSE-based real-time streaming, and **Next.js** for a responsive frontend experience. A lightweight Qwen2.5-7B supervisor agent intelligently routes user inquiries across three specialized assistants — subject Q&A, study planning, and emotional support — each backed by comprehensive observability and fault-tolerance mechanisms.
+ExamMind is a **production-grade multi-agent AI tutoring platform** purpose-built for exam preparation. It leverages **LangGraph** for stateful workflow orchestration, **FastAPI** for SSE-based real-time streaming, and **Next.js** for a responsive frontend experience. A lightweight deepseek-v4flash supervisor agent intelligently routes user inquiries across three specialized assistants — subject Q&A, study planning, and emotional support — each backed by comprehensive observability and fault-tolerance mechanisms.
 
 ---
 
@@ -24,7 +24,7 @@ ExamMind is a **production-grade multi-agent AI tutoring platform** purpose-buil
 - **Subject Q&A** — Hybrid RAG pipeline combining vector search, BM25 keyword retrieval, and BGE reranking, with parallel fan-out/fan-in recall, hallucination detection, and automatic retry loops
 - **Study Planning** — Adversarial multi-agent architecture: a drafter generates plans, two reviewers evaluate in parallel, and consensus must be unanimous before release
 - **Emotional Support** — Guidance delivered through a seasoned homeroom teacher persona, balancing warmth with practical advice
-- **Intent Routing** — Qwen2.5-7B supervisor for low-latency, high-accuracy query classification
+- **Intent Routing** — deepseek-v4flash supervisor for low-latency, high-accuracy query classification
 - **LLM Failover** — Automatic cross-provider fallback when the primary API times out or returns errors
 - **Distributed Tracing** — OpenTelemetry instrumentation with Jaeger (OTLP) and SQLite dual-channel export
 - **State Persistence** — PostgreSQL-backed LangGraph Checkpointer for multi-turn conversation memory; gracefully degrades to stateless mode when no database is available

@@ -22,7 +22,7 @@ flowchart TD
     end
 
     subgraph Graph["LangGraph StateGraph — TutorState"]
-        Supervisor["supervisor\nQwen2.5-7B\nSiliconFlow\ntemperature=0.0"]
+        Supervisor["supervisor\ndeepseek-v4flash\nSiliconFlow\ntemperature=0.0"]
         subgraph Academic["Academic Branch"]
             AR["academic_router"]
             RAG["rag_retrieve\nHybrid RAG"]
@@ -226,7 +226,7 @@ sequenceDiagram
 ```mermaid
 flowchart TD
     subgraph Settings["config/settings.yaml"]
-        SUP_CFG["supervisor:\n  model: Qwen/Qwen2.5-7B-Instruct\n  base_url: siliconflow\n  api_key_env: SILICONFLOW_API_KEY\n  temperature: 0.0"]
+        SUP_CFG["supervisor:\n  model: deepseek-v4flashdeepseek-v4flash-Instruct\n  base_url: siliconflow\n  api_key_env: SILICONFLOW_API_KEY\n  temperature: 0.0"]
         AC_CFG["academic:\n  temperature: 0.7\n  (no model override → DEEPSEEK_*)"]
         PL_CFG["planner:\n  temperature: 0.7\n  (no model override → DEEPSEEK_*)"]
         EM_CFG["emotional:\n  temperature: 0.8\n  (no model override → DEEPSEEK_*)"]
@@ -242,17 +242,17 @@ flowchart TD
     subgraph Env[".env"]
         DS["DEEPSEEK_API_KEY\nDEEPSEEK_BASE_URL\nDEEPSEEK_MODEL"]
         SF["SILICONFLOW_API_KEY\n(shared by: embedding,\nreranker, supervisor,\nfallback)"]
-        FB["FALLBACK_MODEL\nFALLBACK_API_KEY\nFALLBACK_BASE_URL\n(→ SiliconFlow + Qwen2.5-7B)"]
+        FB["FALLBACK_MODEL\nFALLBACK_API_KEY\nFALLBACK_BASE_URL\n(→ SiliconFlow + deepseek-v4flash)"]
     end
 
     DS --> Factory
     SF --> Factory
 
-    Factory --> Supervisor["Supervisor ChatOpenAI\nQwen2.5-7B @ SiliconFlow"]
+    Factory --> Supervisor["Supervisor ChatOpenAI\ndeepseek-v4flash @ SiliconFlow"]
     Factory --> Academic["Academic ChatOpenAI\nDeepSeek-V3"]
     Factory --> Planner["Planner ChatOpenAI\nDeepSeek-V3"]
     Factory --> Emotional["Emotional ChatOpenAI\nDeepSeek-V3"]
 
-    FB --> Fallback["Fallback ChatOpenAI\nQwen2.5-7B @ SiliconFlow\n(auto-triggered by invoke_with_fallback)"]
+    FB --> Fallback["Fallback ChatOpenAI\ndeepseek-v4flash @ SiliconFlow\n(auto-triggered by invoke_with_fallback)"]
 ```
 

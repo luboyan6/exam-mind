@@ -35,7 +35,7 @@
 - PostgreSQL Checkpointer 保证中断/恢复期间状态持久化
 
 **反馈路由器**
-- `feedback_router` 节点：Qwen2.5-7B 快速分类用户反馈为"微调"或"重写"
+- `feedback_router` 节点：deepseek-v4flash 快速分类用户反馈为"微调"或"重写"
 - `plan_tweak` 节点：单次 LLM 调用局部修改草稿（跳过审查循环）
 - 重写路径：清空对抗状态，从头执行完整起草/审查循环
 - `hil_summary`：单字段压缩摘要，每轮覆写防止上下文膨胀
@@ -105,11 +105,11 @@
 **统一 LLM 工厂 + Supervisor 模型切换**
 - `src/graph/llm.py` 新增 `get_node_llm(node_name, **overrides)`：从 `settings.yaml` 按节点读取 `model`、`base_url`、`api_key_env`、`temperature`；未覆盖时回退至 `DEEPSEEK_*` 环境变量
 - 移除 `supervisor.py`、`academic.py`、`planner.py`、`emotional.py` 中四个重复的 `_get_llm()` 工厂函数
-- Supervisor 改用 **SiliconFlow 上的 Qwen2.5-7B-Instruct**（`temperature=0.0`）实现低延迟意图路由；生成节点保留 DeepSeek-V3
+- Supervisor 改用 **SiliconFlow 上的 deepseek-v4flash-Instruct**（`temperature=0.0`）实现低延迟意图路由；生成节点保留 DeepSeek-V3
 - `settings.yaml` 的 `supervisor:` 节新增 `model`、`base_url`、`api_key_env` 字段
 
 **跨厂商 LLM 容灾**
-- Fallback 改为指向 **SiliconFlow + Qwen2.5-7B-Instruct**（真正的跨基础设施故障转移）
+- Fallback 改为指向 **SiliconFlow + deepseek-v4flash-Instruct**（真正的跨基础设施故障转移）
 - 更新 `.env.example`：取消注释并填充 `FALLBACK_MODEL`、`FALLBACK_API_KEY`、`FALLBACK_BASE_URL`；新增 `RERANKER_MODEL` 占位；移除过时的 `TAVILY_API_KEY`
 
 **增强 SSE 事件流**
@@ -139,7 +139,7 @@
 
 ### 已知问题
 
-- Supervisor（Qwen2.5-7B）因训练数据截止日期，对特定历届真题查询可能产生意图误判，计划在 v0.3.0 修复。
+- Supervisor（deepseek-v4flash）因训练数据截止日期，对特定历届真题查询可能产生意图误判，计划在 v0.3.0 修复。
 - 试卷 RAG 分块基于字符数量，作文板块内容可能与其他题型混入同一 chunk，节标题感知分块计划在 v0.3.0 引入。
 
 ---

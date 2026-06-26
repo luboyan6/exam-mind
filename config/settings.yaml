@@ -24,7 +24,7 @@ rag:
   reranker_model: "BAAI/bge-reranker-v2-m3"
 
 supervisor:
-  model: "Qwen/Qwen2.5-7B-Instruct"
+  model: "deepseek-v4flashdeepseek-v4flash-Instruct"
   base_url: "https://api.siliconflow.cn/v1"
   api_key_env: "SILICONFLOW_API_KEY"
   temperature: 0.0                      # Deterministic intent routing
