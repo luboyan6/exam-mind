@@ -41,7 +41,7 @@ ExamMind 是一套面向考试备考场景的**生产级多智能体 AI 辅导�
 | 后端 API | FastAPI + Uvicorn |
 | 编排 | LangGraph |
 | 路由 LLM | deepseek-v4flash（SiliconFlow） |
-| 生成 LLM | DeepSeek-V3 |
+| 生成 LLM | DeepSeek-V4-pro |
 | 向量检索 | ChromaDB + BAAI/bge-m3 |
 | 关键词检索 | rank-bm25 + jieba |
 | 状态持久化 | PostgreSQL |

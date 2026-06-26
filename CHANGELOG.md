@@ -105,7 +105,7 @@
 **统一 LLM 工厂 + Supervisor 模型切换**
 - `src/graph/llm.py` 新增 `get_node_llm(node_name, **overrides)`：从 `settings.yaml` 按节点读取 `model`、`base_url`、`api_key_env`、`temperature`；未覆盖时回退至 `DEEPSEEK_*` 环境变量
 - 移除 `supervisor.py`、`academic.py`、`planner.py`、`emotional.py` 中四个重复的 `_get_llm()` 工厂函数
-- Supervisor 改用 **SiliconFlow 上的 deepseek-v4flash-Instruct**（`temperature=0.0`）实现低延迟意图路由；生成节点保留 DeepSeek-V3
+- Supervisor 改用 **SiliconFlow 上的 deepseek-v4flash-Instruct**（`temperature=0.0`）实现低延迟意图路由；生成节点保留 DeepSeek-V4-pro
 - `settings.yaml` 的 `supervisor:` 节新增 `model`、`base_url`、`api_key_env` 字段
 
 **跨厂商 LLM 容灾**

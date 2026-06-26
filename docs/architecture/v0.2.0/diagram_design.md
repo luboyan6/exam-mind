@@ -27,14 +27,14 @@ flowchart TD
             AR["academic_router"]
             RAG["rag_retrieve\nHybrid RAG"]
             WS["web_search\nDuckDuckGo"]
-            GA["generate_answer\nDeepSeek-V3"]
-            EH["evaluate_hallucination\nDeepSeek-V3 structured"]
+            GA["generate_answer\nDeepSeek-V4-pro"]
+            EH["evaluate_hallucination\nDeepSeek-V4-pro structured"]
         end
         subgraph Planner["Planner Branch"]
             SP["search_policy\nDuckDuckGo"]
-            GP["generate_plan\nDeepSeek-V3"]
+            GP["generate_plan\nDeepSeek-V4-pro"]
         end
-        ER["emotional_response\nDeepSeek-V3"]
+        ER["emotional_response\nDeepSeek-V4-pro"]
     end
 
     subgraph RAGStack["RAG Stack"]
@@ -226,7 +226,7 @@ sequenceDiagram
 ```mermaid
 flowchart TD
     subgraph Settings["config/settings.yaml"]
-        SUP_CFG["supervisor:\n  model: deepseek-v4flashdeepseek-v4flash-Instruct\n  base_url: siliconflow\n  api_key_env: SILICONFLOW_API_KEY\n  temperature: 0.0"]
+        SUP_CFG["supervisor:\n  model: deepseek-v4flash\n  base_url: siliconflow\n  api_key_env: SILICONFLOW_API_KEY\n  temperature: 0.0"]
         AC_CFG["academic:\n  temperature: 0.7\n  (no model override → DEEPSEEK_*)"]
         PL_CFG["planner:\n  temperature: 0.7\n  (no model override → DEEPSEEK_*)"]
         EM_CFG["emotional:\n  temperature: 0.8\n  (no model override → DEEPSEEK_*)"]
@@ -249,9 +249,9 @@ flowchart TD
     SF --> Factory
 
     Factory --> Supervisor["Supervisor ChatOpenAI\ndeepseek-v4flash @ SiliconFlow"]
-    Factory --> Academic["Academic ChatOpenAI\nDeepSeek-V3"]
-    Factory --> Planner["Planner ChatOpenAI\nDeepSeek-V3"]
-    Factory --> Emotional["Emotional ChatOpenAI\nDeepSeek-V3"]
+    Factory --> Academic["Academic ChatOpenAI\nDeepSeek-V4-pro"]
+    Factory --> Planner["Planner ChatOpenAI\nDeepSeek-V4-pro"]
+    Factory --> Emotional["Emotional ChatOpenAI\nDeepSeek-V4-pro"]
 
     FB --> Fallback["Fallback ChatOpenAI\ndeepseek-v4flash @ SiliconFlow\n(auto-triggered by invoke_with_fallback)"]
 ```

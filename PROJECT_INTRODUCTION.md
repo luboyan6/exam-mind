@@ -79,7 +79,7 @@
 | **后端API** | FastAPI + Uvicorn | SSE流式端点、CORS、OTel自动埋点 |
 | **编排引擎** | LangGraph | StateGraph + interrupt() HIL + 条件边 + Fan-out/Fan-in |
 | **路由LLM** | deepseek-v4flash（SiliconFlow） | 轻量意图分类 + 反馈路由 |
-| **生成LLM** | DeepSeek-V3 | 学科解答、学习计划、情绪支持 |
+| **生成LLM** | DeepSeek-V4-pro | 学科解答、学习计划、情绪支持 |
 | **LLM容灾** | deepseek-v4flash（SiliconFlow） | 跨厂商故障转移 |
 | **向量数据库** | ChromaDB | 本地知识库检索（L2→相关度归一化） |
 | **文本嵌入** | BAAI/bge-m3（SiliconFlow） | RAG向量化 |
